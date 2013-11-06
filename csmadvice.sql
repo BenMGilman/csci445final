@@ -1,7 +1,7 @@
 USE team09;
 
 CREATE TABLE IF NOT EXISTS users (
-id int AUTO_INCREMENT, 
+id int, 
 status text,
 photo blob,
 fname varchar(15),
@@ -31,9 +31,25 @@ FOREIGN KEY (user_id) REFERENCES users(id),
 FOREIGN KEY (post_id) REFERENCES posts(id));
 
 CREATE TABLE IF NOT EXISTS login (
-id int AUTO_INCREMENT,
+id int,
 username varchar(15) unique not null,
 password varchar(15) not null,
 user_id int unique not null,
 PRIMARY KEY (id),
 FOREIGN KEY (user_id) REFERENCES users(id));
+
+CREATE TABLE IF NOT EXISTS status (
+name varchar(50),
+PRIMARY KEY (name));
+
+INSERT INTO status VALUES('Candidate');
+INSERT INTO status VALUES('Freshman');
+INSERT INTO status VALUES('Sophomore');
+INSERT INTO status VALUES('Junior');
+INSERT INTO status VALUES('Senior');
+INSERT INTO status VALUES('Graduate Student');
+INSERT INTO status VALUES('Alumni');
+INSERT INTO status VALUES('Staff');
+INSERT INTO status VALUES('Teacher');
+INSERT INTO status VALUES('Professor');
+INSERT INTO status VALUES('Other');

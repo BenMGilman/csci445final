@@ -1,3 +1,14 @@
+<?php
+	@ $db = new mysqli('localhost', 'root', '', 'team09');
+	if (mysqli_connect_errno()) {
+		echo 'Error: Could not connect to database.  Please try again later.';
+		exit;
+	}
+	
+	$query = "select * from status;";
+	$result = $db->query($query);
+	$num_results = $result->num_rows;
+?>
 <html>
 <head>
 	<title>REGISTER PAGE</title>
@@ -27,6 +38,20 @@
 <tr>
 	<td>Password: </td>
 	<td><input type="password" name="userpass" size="18" maxlength="15" required/></td>
+</tr>
+<tr>
+	<td>Status: </td>
+	<td><select name="status">
+		<?php
+		   for ($i=0; $i<$num_results; $i++)
+		   {
+			 $row = $result->fetch_assoc();
+			 $status_type = stripslashes($row['name']); 
+			 echo  '<option value = "'.$status_type.'">'.$status_type.'</option>';
+		  }
+		?>
+		</select>
+	</td>
 </tr>
 <tr>
 	<td><input type="submit" value="Register" /></td>

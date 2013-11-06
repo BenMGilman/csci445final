@@ -10,11 +10,11 @@
 <table border="0">
 <tr>
 	<td>Username: </td>
-	<td colspan="2"><input type="text" name="username" autocomplete="on" size="18" maxlength="15"/></td>
+	<td colspan="2"><input type="text" name="username" autocomplete="on" size="18" maxlength="15" required /></td>
 </tr>
 <tr>
 	<td>Password: </td>
-	<td colspan="2"><input type="password" name="userpass" size="18" maxlength="15"/></td>
+	<td colspan="2"><input type="password" name="userpass" size="18" maxlength="15" required /></td>
 </tr>
 <tr>
 	<td colspan="1"><input type="submit" value="Login"/></td>
