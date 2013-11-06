@@ -1,4 +1,4 @@
-USE csmadvice_445;
+USE team09;
 
 CREATE TABLE IF NOT EXISTS users (
 id int AUTO_INCREMENT, 
