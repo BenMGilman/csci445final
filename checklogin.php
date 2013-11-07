@@ -1,4 +1,6 @@
 <?php
+	// right now when the check is done, you are on a blank screen and a popup comes up then sends user to proper screen
+	// looks kinda choppy right now. maybe there is a way to do this on the screens themselves in order to make it look nice?
 	@ $db = new mysqli('localhost', 'root', '', 'team09');
 	if (mysqli_connect_errno()) {
 		echo 'Error: Could not connect to database.  Please try again later.';
