@@ -1,9 +1,5 @@
 <?php
-	@ $db = new mysqli('localhost', 'root', '', 'team09');
-	if (mysqli_connect_errno()) {
-		echo 'Error: Could not connect to database.  Please try again later.';
-		exit;
-	}
+	include_once('dbaccess.php');
 
 	$postQuery = "insert into posts (keyphrase, post, page, post_date, user_id) values (?, ?, ?, CURDATE(), ?)";
 	$postStmt = $db->prepare($postQuery);

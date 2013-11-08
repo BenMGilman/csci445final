@@ -1,9 +1,5 @@
 <?php
-	@ $db = new mysqli('localhost', 'root', '', 'team09');
-	if (mysqli_connect_errno()) {
-		echo 'Error: Could not connect to database.  Please try again later.';
-		exit;
-	}
+	include_once('dbaccess.php');
 	
 	$query = "select * from status;";
 	$result = $db->query($query);

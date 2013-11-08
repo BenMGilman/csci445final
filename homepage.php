@@ -1,10 +1,6 @@
 <?php
 // right now this is just a test page. There will not be posts specific to the homepage
-	@ $db = new mysqli('localhost', 'root', '', 'team09');
-	if (mysqli_connect_errno()) {
-		echo 'Error: Could not connect to database.  Please try again later.';
-		exit;
-	}
+	include_once('dbaccess.php');
 	
 	$query = "select * from posts;";
 	$result = $db->query($query);
