@@ -34,9 +34,11 @@
 ?>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="style.css" />
 	<title>HOME PAGE</title>
 </head>
 <body>
+<?php include_once('header.php'); ?>
 <h1>HOME PAGE</h1>
 <table>
 <?php

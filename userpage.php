@@ -10,10 +10,11 @@
 ?>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="style.css" />
 	<title>USER PAGE</title>
 </head>
-<?php include_once('header.php'); ?>
 <body>
+<?php include_once('header.php'); ?>
 <h1>USERNAME</h1>
 <?php
 // gets the blob from the database

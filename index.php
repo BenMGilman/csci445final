@@ -43,6 +43,7 @@ $query = "select * from login;";
 ?>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="style.css" />
 	<title>CSM ADVICE</title>
 </head>
 <body>

@@ -1,0 +1,12 @@
+#right a {
+	text-decoration: none;
+}
+
+#pagenav li {
+	list-style-type: none;
+	display: inline;
+}
+
+#pagenav li a {
+	text-decoration: none;
+}
