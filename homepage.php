@@ -11,6 +11,7 @@
 <head>
 	<title>HOME PAGE</title>
 </head>
+<?php include_once('header.php'); ?>
 <body>
 <h1>HOME PAGE</h1>
 <table>

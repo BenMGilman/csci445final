@@ -1,19 +1,23 @@
 <?php
 	include_once('dbaccess.php');
 	
-	$query = "select * from users where status='Senior'";
-	$result = $db->query($query);
-	$num_results = $result->num_rows;
+	$query = "select * from users where id=3";
+	$userresult = $db->query($query);
+	
+	$query = "select * from comments where user_id=3";
+	$comresult = $db->query($query);
+	$num_comments = $comresult->num_rows;
 ?>
 <html>
 <head>
 	<title>USER PAGE</title>
 </head>
+<?php include_once('header.php'); ?>
 <body>
 <h1>USERNAME</h1>
 <?php
 // gets the blob from the database
-	$user = $result->fetch_assoc();
+	$user = $userresult->fetch_assoc();
 	echo '<img src="data:image/jpeg;base64,'.base64_encode($user['photo']).'" alt = "photo"<br>';
 ?>
 <table border="0">
@@ -37,5 +41,20 @@
 		<td><input type="submit" value="Save Changes" /></td>
 	</tr>
 </table>
+<h3>Your Activity:</h3>
+<?php
+	if($num_comments < 0)
+		echo 'No Recent Activity';
+	else{
+		echo '<table border="0">';
+		for ($i=0; $i<$num_comments; $i++){
+			$comment = $comresult->fetch_assoc();
+			echo '<tr><td>';
+			echo stripslashes($comment['comment']);
+			echo '</td></tr>';
+		}
+		echo "</table>";
+	}
+?>
 </body>
 </html>
