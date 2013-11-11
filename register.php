@@ -12,7 +12,7 @@
 <body>
 <h1>REGISTER PAGE</h1>
 
-<form action="checklogin.php" method="post">
+<form action="index.php" method="post">
 <input type="hidden" name="loginflag" value="1"/>
 <table border="0">
 <tr>
