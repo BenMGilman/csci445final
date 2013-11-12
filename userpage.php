@@ -1,6 +1,7 @@
 <?php
 	include_once('dbaccess.php');
 	
+	$username = $_GET['username'];
 	$query = "select * from users where id=3";
 	$userresult = $db->query($query);
 	

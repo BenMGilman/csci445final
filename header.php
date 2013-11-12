@@ -3,13 +3,14 @@
 				<div id="header">
 					<div id="right">
 						Welcome '; echo $username; 
-						echo '| <a href="userpage.php" style="text-decoration: none">Profile</a> | <a href="index.php" style="text-decoration: none">Sign Out</a>
+						echo ' | 
+						<a href="userpage.php?username='; echo $username; echo'">Profile</a> | <a href="index.php" >Sign Out</a>
 					</div>
 					<ul id="pagenav">
-						<li style="list-style-type: none"><a href="homepage.php">Home</a></li>
-						<li style="list-style-type: none"><a href="homepage.php">Courses</a></li>
-						<li style="list-style-type: none"><a href="homepage.php">Teachers</a></li>
-						<li style="list-style-type: none"><a href="homepage.php">Books</a></li>
+						<li><a href="homepage.php" method="post">Home</a></li>
+						<li><a href="homepage.php" method="post">Courses</a></li>
+						<li><a href="homepage.php" method="post">Teachers</a></li>
+						<li><a href="homepage.php" method="post">General</a></li>
 					</ul>
 				</div>
 			</nav>';
