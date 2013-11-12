@@ -1,7 +1,8 @@
 <?php
+	session_start();
 	include_once('dbaccess.php');
 	
-	$username = $_GET['username'];
+	$username = $_SESSION['username'];
 	
 	$query = "select * from login where username=\"".$username."\"";
 	$result = $db->query($query);

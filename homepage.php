@@ -1,4 +1,5 @@
 <?php
+	session_start();
 // right now this is just a test page. There will not be posts specific to the homepage
 	include_once('dbaccess.php');
 	
@@ -22,6 +23,7 @@
 				if($userpass == stripslashes($row['password'])){
 					// update current user
 					$error = 0;
+					$_SESSION['username']=$username;
 				}
 			}
 		}

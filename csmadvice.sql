@@ -1,6 +1,6 @@
 USE team09;
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
 id int, 
 status text,
 photo blob,
@@ -9,7 +9,7 @@ lname varchar(15),
 email varchar(30),
 PRIMARY KEY (id));
 
-CREATE TABLE posts (
+CREATE TABLE IF NOT EXISTS posts (
 id int AUTO_INCREMENT,
 keyphrase text,
 post text,
@@ -19,7 +19,7 @@ user_id int,
 PRIMARY KEY (id),
 FOREIGN KEY (user_id) REFERENCES users(id));
 
-CREATE TABLE comments (
+CREATE TABLE IF NOT EXISTS comments (
 id int AUTO_INCREMENT,
 comment text,
 page text,
@@ -30,7 +30,7 @@ PRIMARY KEY (id),
 FOREIGN KEY (user_id) REFERENCES users(id),
 FOREIGN KEY (post_id) REFERENCES posts(id));
 
-CREATE TABLE login (
+CREATE TABLE IF NOT EXISTS login (
 id int,
 username varchar(15) unique not null,
 password varchar(15) not null,
@@ -38,7 +38,7 @@ user_id int unique not null,
 PRIMARY KEY (id),
 FOREIGN KEY (user_id) REFERENCES users(id));
 
-CREATE TABLE status (
+CREATE TABLE IF NOT EXISTS status (
 name varchar(50),
 PRIMARY KEY (name));
 
