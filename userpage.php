@@ -2,8 +2,14 @@
 	include_once('dbaccess.php');
 	
 	$username = $_GET['username'];
-	$query = "select * from users where id=3";
-	$userresult = $db->query($query);
+	
+	$query = "select * from login where username=\"".$username."\"";
+	$result = $db->query($query);
+	$user = $result->fetch_assoc();
+	
+	$query = "select * from users where id=\"".$user['user_id']."\"";
+	$result = $db->query($query);
+	$user = $result->fetch_assoc();
 	
 	$query = "select * from comments where user_id=3";
 	$comresult = $db->query($query);
@@ -19,7 +25,6 @@
 <h1>USERNAME</h1>
 <?php
 // gets the blob from the database
-	$user = $userresult->fetch_assoc();
 	echo '<img src="data:image/jpeg;base64,'.base64_encode($user['photo']).'" alt = "photo"<br>';
 ?>
 <table border="0">
