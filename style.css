@@ -1,12 +1,46 @@
-#right a {
-	text-decoration: none;
+#right, #pagenav{
+	margin: 3px;
 }
 
-#pagenav li {
-	list-style-type: none;
-	display: inline;
+#pagenav li, #header{
+	border: 2px solid black;
 }
 
-#pagenav li a {
-	text-decoration: none;
+#right{
+	float: left;
+	width: 50%;
 }
+	#right a {
+		text-decoration: none;
+		color: rgb(205, 205, 205);
+		font-weight: bold;
+	}
+
+#pagenav{
+	float: right;
+	width: auto;
+	margin: 3px;
+}
+	#pagenav li {
+		list-style-type: none;
+		display: inline;
+		background: rgb(205, 205, 205);
+		padding: 3px;
+	}
+	#pagenav li a {
+		text-decoration: none;
+		color: rgb(41, 63, 107);
+		font-size: 1.1em;
+	}
+
+#header{
+	background: rgb(41, 63, 107);
+	border-top: 10px solid rgb(205, 205, 205);
+	padding: 5px;
+	padding-bottom: 0px;
+	color: rgb(205, 205, 205);
+	font-size: 1.05em;
+}
+	#header br{
+		clear: both;
+	}

@@ -12,6 +12,7 @@
 						<li><a href="homepage.php" method="post">Teachers</a></li>
 						<li><a href="homepage.php" method="post">General</a></li>
 					</ul>
+					<br />
 				</div>
 			</nav>';
 ?>
