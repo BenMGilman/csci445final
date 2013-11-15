@@ -3,7 +3,7 @@ USE team09;
 CREATE TABLE IF NOT EXISTS users (
 id int, 
 status text,
-photo blob,
+photo text,
 fname varchar(15),
 lname varchar(15),
 email varchar(30),
@@ -42,6 +42,8 @@ CREATE TABLE IF NOT EXISTS status (
 name varchar(50),
 PRIMARY KEY (name));
 
+INSERT INTO users VALUES(0, null, null, null, null, null);
+INSERT INTO login VALUES(0,'guest','guest',0);
 INSERT INTO status VALUES('Candidate');
 INSERT INTO status VALUES('Freshman');
 INSERT INTO status VALUES('Sophomore');

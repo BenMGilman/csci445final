@@ -2,7 +2,7 @@
 	echo 	'<nav class="navbar">
 				<div id="header">
 					<div id="right">
-						Welcome '; echo $username; 
+						Welcome '; echo $_SESSION['username']; 
 						echo ' | 
 						<a href="userpage.php">Profile</a> | <a href="index.php" >Sign Out</a>
 					</div>

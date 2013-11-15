@@ -3,6 +3,8 @@
 // right now this is just a test page. There will not be posts specific to the homepage
 	include_once('dbaccess.php');
 	
+	$_SESSION['return_page']="homepage";
+	
 	$pquery = "select * from posts;";
 	$presult = $db->query($pquery);
 	$pnum_results = $presult->num_rows;
@@ -21,9 +23,11 @@
 			$row = $result->fetch_assoc();
 			if($username == stripslashes($row['username'])){
 				if($userpass == stripslashes($row['password'])){
-					// update current user
 					$error = 0;
+					// update current user
 					$_SESSION['username']=$username;
+					// update current user
+					$_SESSION['user_id']=stripslashes($row['user_id']);
 				}
 			}
 		}
@@ -57,7 +61,7 @@
 </table>
 <form action="submitpost.php" method="post">
 <input type="hidden" name="page_type" value="home" />
-<textarea name="postarea" rows="5" cols="50" required>Enter text here...</textarea><br>
+<textarea name="postarea" rows="5" cols="50" required></textarea><br>
 Keyword: <input type="text" name="keyphrase" size="18" maxlength="15" required />
 <input type="submit" value="Post"/>
 </form>

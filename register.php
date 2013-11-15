@@ -1,5 +1,8 @@
 <?php
+	session_start();
 	include_once('dbaccess.php');
+	
+	$_SESSION['return_page']="register";
 	
 	$query = "select * from status;";
 	$result = $db->query($query);
@@ -13,7 +16,7 @@
 <body>
 <h1>REGISTER PAGE</h1>
 
-<form action="index.php" method="post">
+<form action="uploadphoto.php" method="post" enctype="multipart/form-data">
 <input type="hidden" name="loginflag" value="1"/>
 <table border="0">
 <tr>
@@ -49,6 +52,10 @@
 		?>
 		</select>
 	</td>
+</tr>
+<tr>
+	<td>Picture: </td>
+	<td><input type="file" name="file" id="file" value="Upload Photo"></td>
 </tr>
 <tr>
 	<td><input type="submit" value="Register" /></td>
