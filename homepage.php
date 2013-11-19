@@ -57,16 +57,17 @@
 <?php include_once('header.php'); ?>
 <h1>HOME PAGE</h1>
 <h3>Recent Activity:</h3>
-<table>
+<table id="activity">
 <?php
 // end case we try to get last 4 or so posts in the table since they will be the most recent ones, and display them on the home page
 // maybe make each entry of a post into another table with the photo, username, and date as one column and the post as another
 // need to make some spacing and wrapping text stuff to make it appealing and not look so crappy
 	for ($i=0; $i<$pnum_results; $i++){
 		$row = $presult->fetch_assoc();
-		echo '<tr><td>';
-		echo stripslashes($row['post']);
-		echo '</td></tr>';
+		echo '<tr>';
+		echo '<td>'.stripslashes($row['keyphrase']);
+		echo '<br />'.stripslashes($row['post']).'</td>';
+		echo '</tr>';
 	}
 ?>
 </table>

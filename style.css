@@ -1,3 +1,13 @@
+#activity {
+	margin-left: 10px;
+	width: 80%;
+	border-spacing: 10px;
+}
+	#activity td{
+		border: 1px solid black;
+		padding: 3px;
+	}
+
 #right, #pagenav{
 	margin: 3px;
 }
