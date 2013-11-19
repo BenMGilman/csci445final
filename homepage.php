@@ -2,10 +2,16 @@
 	session_start();
 // right now this is just a test page. There will not be posts specific to the homepage
 	include_once('dbaccess.php');
+
+	if($_SERVER['REQUEST_METHOD'] == 'POST' && $_SESSION['return_page']=="homepage"){
+		$_SESSION['search']=$_POST['search'];
+	}
 	
-	$_SESSION['return_page']="homepage";
-	
-	$pquery = "select * from posts;";
+	if($_SESSION['search']==null){
+		$pquery = "select * from posts;";
+	}else{
+		$pquery = "select * from posts where keyphrase=\"".$_SESSION['search']."\";";
+	}
 	$presult = $db->query($pquery);
 	$pnum_results = $presult->num_rows;
 	
@@ -13,7 +19,7 @@
 	$result = $db->query($query);
 	$num_results = $result->num_rows;
   
-	if($_SERVER['REQUEST_METHOD'] == 'POST') {
+	if($_SERVER['REQUEST_METHOD'] == 'POST' && $_SESSION['return_page']!="homepage") {
 	// if form has been posted process data
 		$username = $_POST['username'];
 		$userpass = $_POST['userpass'];
@@ -35,7 +41,11 @@
 			echo '<script type="text/javascript"> alert("Incorrect login combination."); </script>';
 			echo '<script type="text/javascript"> document.location.href="index.php"; </script>';
 		}
+	}else{
+		$_SESSION['search']=null;
 	}
+	
+	$_SESSION['return_page']="homepage";
 	
 ?>
 <html>
@@ -46,6 +56,7 @@
 <body>
 <?php include_once('header.php'); ?>
 <h1>HOME PAGE</h1>
+<h3>Recent Activity:</h3>
 <table>
 <?php
 // end case we try to get last 4 or so posts in the table since they will be the most recent ones, and display them on the home page
@@ -60,8 +71,7 @@
 ?>
 </table>
 <form action="submitpost.php" method="post">
-<input type="hidden" name="page_type" value="home" />
-<textarea name="postarea" rows="5" cols="50" required></textarea><br>
+<textarea name="postarea" rows="5" cols="50" placeholder="Enter text..." required></textarea><br>
 Keyword: <input type="text" name="keyphrase" size="18" maxlength="15" required />
 <input type="submit" value="Post"/>
 </form>

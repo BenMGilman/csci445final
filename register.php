@@ -14,6 +14,7 @@
 	<title>REGISTER PAGE</title>
 </head>
 <body>
+<?php include_once('header.php'); ?>
 <h1>REGISTER PAGE</h1>
 
 <form action="uploadphoto.php" method="post" enctype="multipart/form-data">

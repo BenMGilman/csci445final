@@ -10,7 +10,7 @@ email varchar(30),
 PRIMARY KEY (id));
 
 CREATE TABLE IF NOT EXISTS posts (
-id int AUTO_INCREMENT,
+id int unique,
 keyphrase text,
 post text,
 page text,

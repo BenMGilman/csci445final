@@ -2,8 +2,6 @@
 	session_start();
 	include_once('dbaccess.php');
 	
-	$_SESSION['return_page'] = "userpage";
-	
 	$username = $_SESSION['username'];
 	$user_id = $_SESSION['user_id'];
 
@@ -15,7 +13,7 @@
 	$result = $db->query($query);
 	$user = $result->fetch_assoc();
 	
-	$query = "select * from comments where user_id=".$_SESSION['user_id'];
+	$query = "select * from comments where user_id=".$user_id;
 	$comresult = $db->query($query);
 	$num_comments = $comresult->num_rows;
 	
@@ -26,8 +24,9 @@
 	if($user_id == 0){
 		echo '<script type="text/javascript"> alert("You must be a registered user to have a profile."); </script>';
 		// change to bring them back to what page they came from
-		echo '<script type="text/javascript"> document.location.href="homepage.php"; </script>';
+		echo '<script type="text/javascript"> document.location.href="'.$_SESSION['return_page'].'.php"; </script>';
 	}
+	$_SESSION['return_page'] = "userpage";
 ?>
 <html>
 <head>
@@ -39,7 +38,7 @@
 <h1>USERNAME</h1>
 <?php
 // gets the image source from the database
-	echo '<img src="'.$user['photo'].'" alt = "photo"<br>';
+	echo '<img src="'.$user['photo'].'" alt = "photo" width="140" height="140"/><br>';
 ?>
 <form action="uploadphoto.php" method="post" enctype="multipart/form-data">
 <table border="0">

@@ -2,6 +2,8 @@
 	session_start();
 	$_SESSION['username'] = "guest";
 	$_SESSION['user_id'] = 0;
+	$_SESSION['search']=null;
+	$_SESSION['return_page']="index";
 ?>
 <html>
 <head>
@@ -9,6 +11,7 @@
 	<title>CSM ADVICE</title>
 </head>
 <body>
+<?php include_once('header.php'); ?>
 <h1>CSM ADVICE</h1>
 
 <form action="homepage.php" method="post">
@@ -23,7 +26,6 @@
 </tr>
 <tr>
 	<td colspan="1"><input type="submit" value="Login"/></td>
-	<td colspan="1"><input type="button" value="Guest" onclick="location.href='homepage.php'"/></td>
 	<td colspan="1"><input type="button" value="Register" onclick="location.href='register.php'"/></td>
 </tr>
 </table>
