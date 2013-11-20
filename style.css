@@ -4,11 +4,15 @@
 	border-spacing: 10px;
 }
 	#activity td{
-		border: 1px solid black;
 		padding: 3px;
 	}
+	#activity #keyword{
+		background: rgb(41, 63, 107);
+		color: rgb(205, 205, 205);
+		font-weight: bold;
+	}
 
-#right, #pagenav{
+#left, #pagenav{
 	margin: 3px;
 }
 
@@ -16,19 +20,30 @@
 	border: 2px solid black;
 }
 
-#right{
+#left{
 	float: left;
-	width: 50%;
+	width: 40%;
 }
-	#right a {
+	#left a {
 		text-decoration: none;
 		color: rgb(205, 205, 205);
 		font-weight: bold;
 	}
 
-#pagenav{
+#right{
 	float: right;
 	width: auto;
+}
+	#right input{
+		width: auto;
+	}
+	#right #searchbar{
+		width: auto;
+	}
+
+#pagenav{
+	float: right;
+	width: 100%;
 	margin: 3px;
 }
 	#pagenav li {

@@ -1,19 +1,21 @@
 <?php
 	echo 	'<nav class="navbar">
 				<div id="header">
-					<div id="right">
+					<div id="left">
 						Welcome '; echo $_SESSION['username']; 
 						echo ' | 
 						<a href="userpage.php">Profile</a> | <a href="index.php" >Sign Out</a>
 					</div>
-					<ul id="pagenav">
+					<div id="right">
 						<form action="'; echo $_SESSION["return_page"].".php"; echo'" method="post">';
 						if($_SESSION['return_page']!="userpage" && $_SESSION['return_page']!="index" && $_SESSION['return_page']!="register"){
 						echo '
-							<li><input type="text" name="search" autocomplete="on" size="18" maxlength="15"/></li>
-							<li><input type="submit" value="Search"/></li>';
+							<input id="searchbar" type="text" name="search" autocomplete="on" size="18" maxlength="15"/>
+							<input type="submit" value="Search"/>';
 						}
-						echo '<li><a href="homepage.php" method="post">Home</a></li>
+					echo '</div>
+					<ul id="pagenav">
+						<li><a href="homepage.php" method="post">Home</a></li>
 						<li><a href="coursepage.php" method="post">Courses</a></li>
 						<li><a href="teacherpage.php" method="post">Teachers</a></li>
 						<li><a href="socialpage.php" method="post">Social</a></li>
