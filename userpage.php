@@ -5,17 +5,17 @@
 	$username = $_SESSION['username'];
 	$user_id = $_SESSION['user_id'];
 
-	$query = "select * from login where username=\"".$username."\"";
-	$result = $db->query($query);
-	$user = $result->fetch_assoc();
-
-	$query = "select * from users where id=\"".$user['user_id']."\"";
+	$query = "select * from users where id=\"".$user_id."\";";
 	$result = $db->query($query);
 	$user = $result->fetch_assoc();
 	
-	$query = "select * from comments where user_id=".$user_id;
-	$comresult = $db->query($query);
-	$num_comments = $comresult->num_rows;
+	$cquery = "select * from comments where user_id=".$user_id.";";
+	$cresult = $db->query($cquery);
+	$num_comments = $cresult->num_rows;
+	
+	$pquery = "select * from posts where user_id=".$user_id.";";
+	$presult = $db->query($pquery);
+	$num_posts = $presult->num_rows;
 	
 	$query = "select * from status;";
 	$statresult = $db->query($query);
@@ -35,7 +35,7 @@
 </head>
 <body>
 <?php include_once('header.php'); ?>
-<h1>USERNAME</h1>
+<h1><?php echo $username; ?></h1>
 <?php
 // gets the image source from the database
 	echo '<img src="'.$user['photo'].'" alt = "photo" width="140" height="140"/><br>';
@@ -77,28 +77,48 @@
 		<td><input type="file" name="file" id="file" value="Upload Photo"></td>
 	</tr>
 	<tr>
-		<td>About Me: </td>
-		<td><textarea name="aboutme" placeholder="Write about yourself here..."></textarea></td>
-	</tr>
-	<tr>
 		<td><input type="submit" value="Save Changes" /></td>
 	</tr>
 </table>
 </form>
 <h3>Your Activity:</h3>
 <?php
-	if($num_comments < 0)
-		echo 'No Recent Activity';
+	echo '<div id="userposts">';
+	echo '<h4>Posts:</h4>';
+	if($num_posts < 0)
+		echo 'No Recent Posts';
 	else{
-		echo '<table border="0">';
-		for ($i=0; $i<$num_comments; $i++){
-			$comment = $comresult->fetch_assoc();
-			echo '<tr><td>';
-			echo stripslashes($comment['comment']);
+		for ($i=0; $i<$num_posts; $i++){
+			$post = $presult->fetch_assoc();
+			echo '<table><tr><td>';
+			echo stripslashes($post['post_date']).'
+			<form action="editpost.php" method="post">
+			<textarea name="postarea" rows="5" cols="80" required>'.stripslashes($post['post']).'</textarea><br>
+			Title: <input type="text" name="keyphrase" size="18" maxlength="15" value="'.stripslashes($post['keyphrase']).'" required />
+			<input type="submit" value="Edit"/><input type="hidden" name="postid" value="'.stripslashes($post['id']).'">
+			</form>';
 			echo '</td></tr>';
 		}
 		echo "</table>";
 	}
+	
+	echo '<h4>Comments:</h4>';
+	if($num_comments < 0)
+		echo 'No Recent Comments';
+	else{
+		for ($i=0; $i<$num_comments; $i++){
+			$comment = $cresult->fetch_assoc();
+			echo '<table><tr><td>';
+			echo stripslashes($post['post_date']).'
+			<form action="editpost.php" method="post">
+			<textarea name="postarea" rows="5" cols="80" required>'.stripslashes($comment['comment']).'</textarea><br>
+			<input type="submit" value="Edit"/><input type="hidden" name="commentid" value="'.stripslashes($comment['id']).'">
+			</form>';
+			echo '</td></tr>';
+		}
+		echo "</table>";
+	}
+	echo '</div>';
 ?>
 </body>
 </html>

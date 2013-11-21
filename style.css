@@ -11,6 +11,26 @@
 		color: rgb(205, 205, 205);
 		font-weight: bold;
 	}
+	#activity div{
+		margin-left: 40px;
+	}
+	
+#recent {
+	margin-left: 10px;
+	width: 80%;
+	border-spacing: 10px;
+}
+	#recent td{
+		padding: 3px;
+	}
+	#recent #key{
+		background: rgb(41, 63, 107);
+		color: rgb(205, 205, 205);
+		font-weight: bold;
+	}
+	#recent div{
+		margin-left: 40px;
+	}
 
 #left, #pagenav{
 	margin: 3px;

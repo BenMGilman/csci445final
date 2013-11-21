@@ -2,24 +2,25 @@
 	session_start();
 // right now this is just a test page. There will not be posts specific to the homepage
 	include_once('dbaccess.php');
-
-	if($_SERVER['REQUEST_METHOD'] == 'POST' && $_SESSION['return_page']=="homepage"){
-		$_SESSION['search']=$_POST['search'];
-	}
 	
-	if($_SESSION['search']==null){
-		$pquery = "select * from posts;";
+	$tpquery = "select * from posts;";
+	$tpresult = $db->query($tpquery);
+	$tpnum_results = $tpresult->num_rows;
+	
+	if($tpnum_results <= 5){
+		$presult = $tpresult;
+		$pnum_results = $tpnum_results;
 	}else{
-		$pquery = "select * from posts where keyphrase=\"".$_SESSION['search']."\";";
+		$pquery = 'select * from posts where (id='.$tpnum_results.' or id='.($tpnum_results-1).' or id='.($tpnum_results-2).' or id='.($tpnum_results-3).' or id='.($tpnum_results-5).';';
+		$presult = $tpresult;
+		$pnum_results = $tpnum_results;
 	}
-	$presult = $db->query($pquery);
-	$pnum_results = $presult->num_rows;
 	
 	$query = "select * from login;";
 	$result = $db->query($query);
 	$num_results = $result->num_rows;
   
-	if($_SERVER['REQUEST_METHOD'] == 'POST' && $_SESSION['return_page']!="homepage") {
+	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// if form has been posted process data
 		$username = $_POST['username'];
 		$userpass = $_POST['userpass'];
@@ -56,6 +57,6 @@
 <body>
 <?php include_once('header.php'); ?>
 <h1>HOME PAGE</h1>
-<?php include_once('recentactivity.php'); ?>
+<?php include_once('homeposts.php'); ?>
 </body>
 </html>
