@@ -109,7 +109,7 @@
 		for ($i=0; $i<$num_comments; $i++){
 			$comment = $cresult->fetch_assoc();
 			echo '<table><tr><td>';
-			echo stripslashes($post['post_date']).'
+			echo stripslashes($comment['post_date']).'
 			<form action="editpost.php" method="post">
 			<textarea name="postarea" rows="5" cols="80" required>'.stripslashes($comment['comment']).'</textarea><br>
 			<input type="submit" value="Edit"/><input type="hidden" name="commentid" value="'.stripslashes($comment['id']).'">
