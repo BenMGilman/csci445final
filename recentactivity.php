@@ -1,7 +1,6 @@
 <?php
 
-	echo'<h3>Recent Activity:</h3>
-	<div id="activity">';
+	echo'<div id="activity">';
 	for ($i=0; $i<$pnum_results; $i++){
 		$prow = $presult->fetch_assoc();
 		
@@ -19,8 +18,8 @@
 		$urow = $uresult->fetch_assoc();
 		
 		echo '<table><tr>';
-		echo '<td><table id="postinfo"><tr><td><img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></td></tr>';
-		echo '<tr><td>'.$prow['post_date'].'</td></tr></table>';
+		echo '<td><table id="postinfo"><tr align="center"><td><img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></td></tr>';
+		echo '<tr align="center"><td><font size="1">'.$prow['post_date'].'</font></td></tr></table>';
 		echo '<td><table><tr><td id="keyword">'.$keyphrase.'</td></tr>';
 		echo '<tr><td>'.$post.'</td></tr></table>';
 		echo '</tr></table>';
@@ -40,8 +39,8 @@
 			$urow = $uresult->fetch_assoc();
 			
 			echo '<table><tr>';
-			echo '<td><table id="postinfo"><tr><td><img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></td></tr>';
-			echo '<tr><td>'.$crow['post_date'].'</td></tr></table>';
+			echo '<td><table id="postinfo"><tr align="center"><td><img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></td></tr>';
+			echo '<tr align="center"><td><font size="1">'.$crow['post_date'].'</font></td></tr></table>';
 			echo '<td>';
 			echo $comment.'</td>';
 			echo '</tr></table>';

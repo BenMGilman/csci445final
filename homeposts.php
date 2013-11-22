@@ -31,9 +31,9 @@
 		$urow = $uresult->fetch_assoc();
 		
 		echo '<table><tr>';
-		echo '<td>Posted to the '.$page.' page:</td></tr>';
-		echo '<tr><td><table><tr><td><img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></td></tr>';
-		echo '<tr><td>'.$prow['post_date'].'</td></tr></table>';
+		echo '<td colspan="2"><b>Posted to the '.$page.' page:</b></td></tr>';
+		echo '<tr><td><table><tr align="center"><td><img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></td></tr>';
+		echo '<tr align="center"><td><font size="1">'.$prow['post_date'].'</font></td></tr></table>';
 		echo '<td><table><tr><td id="key">'.$keyphrase.'</td></tr>';
 		echo '<tr><td>'.$post.'</td></tr></table>';
 		echo '</tr></table>';
@@ -53,11 +53,11 @@
 			$urow = $uresult->fetch_assoc();
 			
 			echo '<table><tr>';
-			echo '<td><table id="postinfo"><tr><td><img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></td></tr>';
-			echo '<tr><td>'.$crow['post_date'].'</td></tr></table>';
-			echo '<td>';
-			echo $comment.'</td>';
-			echo '</tr></table>';
+			echo '<td><table id="postinfo"><tr align="center"><td><img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></td></tr>';
+			echo '<tr align="center"><td><font size="1">'.$crow['post_date'].'</font></td></tr></table>';
+			echo '<td><table>';
+			echo '<tr><td>'.$comment.'</td></tr></table></td>';
+			echo '</td></tr></table>';
 		}
 		echo '</div>';
 	}

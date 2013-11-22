@@ -6,14 +6,14 @@
 	$tpquery = "select * from posts;";
 	$tpresult = $db->query($tpquery);
 	$tpnum_results = $tpresult->num_rows;
-	
+
 	if($tpnum_results <= 5){
 		$presult = $tpresult;
 		$pnum_results = $tpnum_results;
 	}else{
-		$pquery = 'select * from posts where (id='.$tpnum_results.' or id='.($tpnum_results-1).' or id='.($tpnum_results-2).' or id='.($tpnum_results-3).' or id='.($tpnum_results-5).';';
-		$presult = $tpresult;
-		$pnum_results = $tpnum_results;
+		$pquery = 'select * from posts where (id='.$tpnum_results.' or id='.($tpnum_results-1).' or id='.($tpnum_results-2).' or id='.($tpnum_results-3).' or id='.($tpnum_results-5).');';
+		$presult = $db->query($pquery);
+		$pnum_results = $presult->num_rows;
 	}
 	
 	$query = "select * from login;";
