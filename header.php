@@ -8,7 +8,7 @@
 					</div>
 					<div id="right">
 						<form action="'; echo $_SESSION["return_page"].".php"; echo'" method="post">';
-						if($_SESSION['return_page']!="userpage" && $_SESSION['return_page']!="index" && $_SESSION['return_page']!="register"){
+						if($_SESSION['return_page']!="userpage" && $_SESSION['return_page']!="index" && $_SESSION['return_page']!="register" && $_SESSION['return_page']!="homepage"){
 						echo '
 							<input id="searchbar" type="text" name="search" autocomplete="on" size="18" maxlength="15"/>
 							<input type="submit" value="Search"/>';
