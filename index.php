@@ -30,5 +30,6 @@
 </tr>
 </table>
 </form>
+<a href="forgotpassword.php">Forgot your password?</a>
 </body>
 </html>

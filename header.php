@@ -2,9 +2,11 @@
 	echo 	'<nav class="navbar">
 				<div id="header">
 					<div id="left">
-						Welcome '; echo $_SESSION['username']; 
+						Welcome '; echo $_SESSION['username'];
+						$signinout = "Sign Out";
+						if($_SESSION['username'] == "guest") $signinout = "Sign In";
 						echo ' | 
-						<a href="userpage.php">Profile</a> | <a href="index.php" >Sign Out</a>
+						<a href="userpage.php">Profile</a> | <a href="index.php" >'.$signinout.'</a>
 					</div>
 					<div id="right">
 						<form action="'; echo $_SESSION["return_page"].".php"; echo'" method="post">';
