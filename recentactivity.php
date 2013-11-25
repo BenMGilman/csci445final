@@ -19,7 +19,11 @@
 		$urow = $uresult->fetch_assoc();
 		
 		echo '<table><tr>';
-		echo '<td><table class="postinfo"><tr align="center"><td><img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></td></tr>';
+		echo '<td><table class="postinfo"><tr align="center"><td>
+				<form id="diffuser'.$prow['user_id'].'" action="differentuser.php" method="post">
+				<input type="hidden" name="user" value="'.$prow['user_id'].'">
+				<a href="javascript:void()" onclick="document.getElementById(\'diffuser'.$prow['user_id'].'\').submit()">
+				<img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></a></td></tr></form>';
 		echo '<tr align="center"><td><font size="1">'.$prow['post_date'].'</font></td></tr></table>';
 		echo '<td><table><tr><td id="keyword">'.$keyphrase.'</td></tr>';
 		echo '<tr><td>'.$post.'</td></tr></table>';
@@ -28,25 +32,30 @@
 		$cquery = "select * from comments where post_id=".$postid;
 		$cresult = $db->query($cquery);
 		$cnum_results = $cresult->num_rows;
-		
-		echo '<div>';
-		for ($i=0; $i<$cnum_results; $i++){
-			$crow = $cresult->fetch_assoc();
-			$comment = stripslashes($crow['comment']);
-			
-			$uquery = "select * from users where id=".$prow['user_id'].";";
-			$uresult = $db->query($uquery);
-			$unum_results = $uresult->num_rows;
-			$urow = $uresult->fetch_assoc();
-			
-			echo '<table><tr>';
-			echo '<td><table id="postinfo"><tr align="center"><td><img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></td></tr>';
-			echo '<tr align="center"><td><font size="1">'.$crow['post_date'].'</font></td></tr></table>';
-			echo '<td>';
-			echo $comment.'</td>';
-			echo '</tr></table>';
+		if($cnum_results > 0){
+			echo '<div>';
+			for ($i=0; $i<$cnum_results; $i++){
+				$crow = $cresult->fetch_assoc();
+				$comment = stripslashes($crow['comment']);
+				
+				$uquery = "select * from users where id=".$prow['user_id'].";";
+				$uresult = $db->query($uquery);
+				$unum_results = $uresult->num_rows;
+				$urow = $uresult->fetch_assoc();
+				
+				echo '<table><tr>';
+				echo '<td><table class="postinfo"><tr align="center"><td>
+				<form id="diffuser'.$prow['user_id'].'" action="differentuser.php" method="post">
+				<input type="hidden" name="user" value="'.$prow['user_id'].'">
+				<a href="javascript:void()" onclick="document.getElementById(\'diffuser'.$prow['user_id'].'\').submit()">
+				<img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></a></td></tr></form>';
+				echo '<tr align="center"><td><font size="1">'.$crow['post_date'].'</font></td></tr></table>';
+				echo '<td>';
+				echo $comment.'</td>';
+				echo '</tr></table>';
+			}
+			echo '</div>';
 		}
-		echo '</div>';
 		echo'<div><form action="submitcomment.php" method="post">
 			<table><tr>
 			<textarea name="commentarea" rows="3" cols="80" placeholder="Enter text..." required></textarea><br>
