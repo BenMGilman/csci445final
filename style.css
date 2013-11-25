@@ -1,6 +1,6 @@
 #activity {
 	margin-left: 10px;
-	width: 80%;
+	width: 95%;
 	border-spacing: 10px;
 }
 	#activity td{
@@ -14,10 +14,13 @@
 	#activity div{
 		margin-left: 40px;
 	}
+	#activity textarea{
+		width: 95%;
+	}
 	
 #recent {
 	margin-left: 10px;
-	width: 80%;
+	width: 95%;
 	border-spacing: 10px;
 }
 	#recent td{
@@ -31,6 +34,16 @@
 	#recent div{
 		margin-left: 40px;
 	}
+
+#activity .posting, #recent .posting{
+	border: 1px solid black;
+	border-radius: 20px;
+	padding: 4px;
+	margin-left: 0px;
+	margin-bottom: 15px;
+	background: rgb(205, 205, 205);
+	box-shadow: 4px 5px 5px;
+}
 
 #left, #pagenav{
 	margin: 3px;

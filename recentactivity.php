@@ -2,6 +2,7 @@
 
 	echo'<div id="activity">';
 	for ($i=0; $i<$pnum_results; $i++){
+		echo'<div class="posting">';
 		$prow = $presult->fetch_assoc();
 		
 		$postid = stripslashes($prow['id']);
@@ -18,7 +19,7 @@
 		$urow = $uresult->fetch_assoc();
 		
 		echo '<table><tr>';
-		echo '<td><table id="postinfo"><tr align="center"><td><img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></td></tr>';
+		echo '<td><table class="postinfo"><tr align="center"><td><img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></td></tr>';
 		echo '<tr align="center"><td><font size="1">'.$prow['post_date'].'</font></td></tr></table>';
 		echo '<td><table><tr><td id="keyword">'.$keyphrase.'</td></tr>';
 		echo '<tr><td>'.$post.'</td></tr></table>';
@@ -46,16 +47,14 @@
 			echo '</tr></table>';
 		}
 		echo '</div>';
-		echo'<div><table>
-			<tr>
-			<form action="submitcomment.php" method="post">
+		echo'<div><form action="submitcomment.php" method="post">
+			<table><tr>
 			<textarea name="commentarea" rows="3" cols="80" placeholder="Enter text..." required></textarea><br>
 			<input type="hidden" name="postid" value="'.$postid.'">
 			<input id="comment_button" type="submit" value="Comment"/>
-			</form>
 			</tr>';
-		echo '</table></div>';
-
+		echo '</table></form></div>';
+		echo '</div>';
 	}
 	
 	if($pnum_results == 0){
@@ -67,5 +66,5 @@
 	<textarea name="postarea" rows="5" cols="80" placeholder="Enter text..." required></textarea><br>
 	Title: <input type="text" name="keyphrase" size="18" maxlength="15" required />
 	<input type="submit" value="Post"/>
-	</form>';
+	</form></div>';
 ?>

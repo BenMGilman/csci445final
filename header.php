@@ -1,6 +1,7 @@
 <?php
 	echo 	'<nav class="navbar">
 				<div id="header">
+					<form action="'; echo $_SESSION["return_page"].".php"; echo'" method="post">
 					<div id="left">
 						Welcome '; echo $_SESSION['username'];
 						$signinout = "Sign Out";
@@ -8,8 +9,7 @@
 						echo ' | 
 						<a href="userpage.php">Profile</a> | <a href="index.php" >'.$signinout.'</a>
 					</div>
-					<div id="right">
-						<form action="'; echo $_SESSION["return_page"].".php"; echo'" method="post">';
+					<div id="right">';
 						if($_SESSION['return_page']!="userpage" && $_SESSION['return_page']!="index" && $_SESSION['return_page']!="register" && $_SESSION['return_page']!="homepage"){
 						echo '
 							<input id="searchbar" type="text" name="search" autocomplete="on" size="18" maxlength="15"/>
@@ -23,9 +23,9 @@
 						<li><a href="socialpage.php" method="post">Social</a></li>
 						<li><a href="degreepage.php" method="post">Degree</a></li>
 						<li><a href="generalpage.php" method="post">General</a></li>
-						</form>
 					</ul>
 					<br />
+					</form>
 				</div>
 			</nav>';
 ?>

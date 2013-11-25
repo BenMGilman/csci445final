@@ -28,6 +28,7 @@
 	}
 	$_SESSION['return_page'] = "userpage";
 ?>
+<!DOCTYPE HTML>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css" />

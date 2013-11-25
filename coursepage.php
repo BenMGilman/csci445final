@@ -21,6 +21,7 @@
 	$pnum_results = $presult->num_rows;
 	
 ?>
+<!DOCTYPE HTML>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css" />

@@ -1,8 +1,8 @@
 <?php
-
 	echo'<h3>Recent Activity:</h3>
 	<div id="recent">';
 	for ($i=0; $i<$pnum_results; $i++){
+		echo '<div class="posting">';
 		$prow = $presult->fetch_assoc();
 		
 		$postid = stripslashes($prow['id']);
@@ -53,16 +53,18 @@
 			$urow = $uresult->fetch_assoc();
 			
 			echo '<table><tr>';
-			echo '<td><table id="postinfo"><tr align="center"><td><img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></td></tr>';
+			echo '<td><table class="postinfo"><tr align="center"><td><img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/></td></tr>';
 			echo '<tr align="center"><td><font size="1">'.$crow['post_date'].'</font></td></tr></table>';
 			echo '<td><table>';
 			echo '<tr><td>'.$comment.'</td></tr></table></td>';
 			echo '</td></tr></table>';
 		}
-		echo '</div>';
+		echo '</div></div>';
 	}
 	
 	if($pnum_results == 0){
 		echo "There are no posts.";
 	}
+	
+	echo '</div>';
 ?>

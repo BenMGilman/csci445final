@@ -4,6 +4,7 @@
 	$_SESSION['search']=null;
 	$_SESSION['return_page']="index";
 ?>
+<!DOCTYPE HTML>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css" />

@@ -8,6 +8,7 @@
 	$result = $db->query($query);
 	$num_results = $result->num_rows;
 ?>
+<!DOCTYPE HTML>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css" />

@@ -41,7 +41,7 @@
 		mail($useremail, $subject, $message, $fromaddress);
 	}
 ?>
-
+<!DOCTYPE HTML>
 <html>
 <head>
 <title>Password Request</title>
