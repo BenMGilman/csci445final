@@ -35,7 +35,25 @@
 		margin-left: 40px;
 	}
 
-#activity .posting, #recent .posting{
+#diffposts {
+	margin-left: 10px;
+	width: 95%;
+	border-spacing: 10px;
+}
+	#diffposts td{
+		padding: 3px;
+	}
+	#diffposts #key{
+		background: rgb(41, 63, 107);
+		color: rgb(205, 205, 205);
+		font-weight: bold;
+	}	
+	
+#diffuserinfo td{
+	padding: 4px;
+}	
+	
+#activity .posting, #recent .posting, #diffposts .posting{
 	border: 1px solid black;
 	border-radius: 20px;
 	padding: 4px;
