@@ -17,10 +17,10 @@
 		$unum_results = $uresult->num_rows;
 		$urow = $uresult->fetch_assoc();
 		
-		echo   '<table>
+		echo   '<table class="fullpost">
 					<tr>
 						<td>
-							<table class="postinfo">
+							<table>
 								<tr align="center">
 									<td>
 										<form id="diffuser'.$prow['user_id'].'" action="differentuser.php" method="post">
@@ -113,7 +113,7 @@
 		echo 'No Matches Found<br />';
 	}
 	
-	echo'<br />New Post:
+	echo'<br /><b>New Post</b>
 	<form action="submitpost.php" method="post">
 		Title: <input type="text" name="keyphrase" size="18" maxlength="15" required />
 		<textarea name="postarea" rows="5" cols="80" placeholder="Enter text..." required></textarea><br />

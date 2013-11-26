@@ -17,6 +17,9 @@
 	#activity textarea{
 		width: 95%;
 	}
+	#activity b{
+		font-weight: bold;
+	}
 	
 #recent {
 	margin-left: 10px;
@@ -119,4 +122,7 @@
 }
 	#header br{
 		clear: both;
+	}
+	#header #pagenav{
+		padding-top: 5px;
 	}
