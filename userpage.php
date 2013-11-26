@@ -94,8 +94,8 @@
 			echo '<table><tr><td>';
 			echo stripslashes($post['post_date']).'
 			<form action="editpost.php" method="post">
+			Title: <input type="text" name="keyphrase" size="18" maxlength="15" value="'.stripslashes($post['keyphrase']).'" required /><br />
 			<textarea name="postarea" rows="5" cols="80" required>'.stripslashes($post['post']).'</textarea><br>
-			Title: <input type="text" name="keyphrase" size="18" maxlength="15" value="'.stripslashes($post['keyphrase']).'" required />
 			<input type="submit" value="Edit"/><input type="hidden" name="postid" value="'.stripslashes($post['id']).'">
 			</form>';
 			echo '</td></tr>';

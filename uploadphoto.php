@@ -33,6 +33,10 @@
 			echo '<script type="text/javascript"> alert("Invalid photo"); </script>';
 			echo '<script type="text/javascript"> document.location.href="'.$page.'.php"; </script>';
 		}
+	}else{
+		if($page == "register"){
+			$photo = "upload/default.png";
+		}
 	}
 	
 	// this is for if they entered from register

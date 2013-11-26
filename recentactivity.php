@@ -1,5 +1,4 @@
 <?php
-
 	echo'<div id="activity">';
 	for ($i=0; $i<$pnum_results; $i++){
 		echo'<div class="posting">';
@@ -57,11 +56,11 @@
 		$cnum_results = $cresult->num_rows;
 		if($cnum_results > 0){
 			echo '<div>';
-			for ($i=0; $i<$cnum_results; $i++){
+			for ($k=0; $k<$cnum_results; $k++){
 				$crow = $cresult->fetch_assoc();
 				$comment = stripslashes($crow['comment']);
 				
-				$uquery = "select * from users where id=".$prow['user_id'].";";
+				$uquery = "select * from users where id=".$crow['user_id'].";";
 				$uresult = $db->query($uquery);
 				$unum_results = $uresult->num_rows;
 				$urow = $uresult->fetch_assoc();
@@ -72,9 +71,9 @@
 									<table class="postinfo">
 										<tr align="center">
 											<td>
-												<form id="diffuser'.$prow['user_id'].'" action="differentuser.php" method="post">
-													<input type="hidden" name="user" value="'.$prow['user_id'].'">
-													<a href="javascript:void()" onclick="document.getElementById(\'diffuser'.$prow['user_id'].'\').submit()">
+												<form id="diffuser'.$crow['user_id'].'" action="differentuser.php" method="post">
+													<input type="hidden" name="user" value="'.$crow['user_id'].'">
+													<a href="javascript:void()" onclick="document.getElementById(\'diffuser'.$crow['user_id'].'\').submit()">
 														<img src="'.$urow['photo'].'" alt = "photo" width="50" height="50"/>
 													</a>
 												</form>
@@ -116,9 +115,8 @@
 	
 	echo'<br />New Post:
 	<form action="submitpost.php" method="post">
-		<textarea name="postarea" rows="5" cols="80" placeholder="Enter text..." required></textarea>
-		<br>
 		Title: <input type="text" name="keyphrase" size="18" maxlength="15" required />
+		<textarea name="postarea" rows="5" cols="80" placeholder="Enter text..." required></textarea><br />
 		<input type="submit" value="Post"/>
 	</form>
 	</div>';
