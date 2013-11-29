@@ -12,12 +12,17 @@
 	}
 	
 	if($_SESSION['search']==null){
-		$pquery = "select * from posts where page=\"".$_SESSION['return_page']."\";";
+		$pquery = "select * from posts where page=?;";
+		$stmt = $db->prepare($pquery);
+		$stmt->bind_param("s", $_SESSION['return_page']);
 	}else{
-		$pquery = "select * from posts where keyphrase=\"".$_SESSION['search']."\" and page=\"".$_SESSION['return_page']."\";";
+		$pquery = "select * from posts where keyphrase=? and page=?;";
+		$stmt = $db->prepare($pquery);
+		$stmt->bind_param("ss", $_SESSION['search'], $_SESSION['return_page']);
 	}
 	
-	$presult = $db->query($pquery);
+	$stmt->execute();
+	$presult = $stmt->get_result();
 	$pnum_results = $presult->num_rows;
 	
 ?>

@@ -8,9 +8,12 @@
 	$found = FALSE;
 	
 	$userquery = "select login.password, users.email from login, users
-				  where login.username='".$name."'
+				  where login.username= ?
 				  and login.id = users.id";
-	$userresult = $db->query($userquery);
+	$stmt = $db->prepare($userquery);
+	$stmt->bind_param("s", $name);
+	$stmt->execute();
+	$userresult = $stmt->get_result();
 	if($userresult->num_rows > 0){
 		$user = $userresult->fetch_assoc();
 		$userpassword = stripslashes($user['password']);
@@ -20,9 +23,12 @@
 	}
 	else{
 		$emailquery = "select login.password, login.username from login, users
-					   where users.email = '".$name."'
+					   where users.email = ?
 					   and login.id = users.id";
-		$emailresult = $db->query($emailquery);
+		$stmt = $db->prepare($emailquery);
+		$stmt->bind_param("s", $name);
+		$stmt->execute();
+		$emailresult = $stmt->get_result();
 		if($emailresult->num_rows > 0){
 			$user = $emailresult->fetch_assoc();
 			$userpassword = stripslashes($user['password']);

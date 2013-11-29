@@ -87,11 +87,15 @@
 		
 		// make queries to update tables
 		if($photo == null){
-			$query = 'update users set fname="'.$fname.'", lname="'.$lname.'", email="'.$email.'", status="'.$status.'" where id="'.$_SESSION['user_id'].'"';
+			$query = 'update users set fname=?, lname=?, email=?, status=? where id=?;';
+			$stmt = $db->prepare($query);
+			$stmt->bind_param('ssssi', $fname, $lname, $email, $status, $_SESSION['user_id']);
 		}else{
-			$query = 'update users set fname="'.$fname.'", lname="'.$lname.'", email="'.$email.'", status="'.$status.'", photo="'.$photo.'" where id="'.$_SESSION['user_id'].'"';
+			$query = 'update users set fname=?, lname=?, email=?, status=?, photo=? where id=?;';
+			$stmt = $db->prepare($query);
+			$stmt->bind_param('sssssi', $fname, $lname, $email, $status, $photo, $_SESSION['user_id']);
 		}
-		$db->query($query);
+		$stmt->execute();
 				
 		echo '<script type="text/javascript"> alert("Changes saved"); </script>';
 		echo '<script type="text/javascript"> document.location.href="'.$page.'.php"; </script>';

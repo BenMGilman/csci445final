@@ -4,20 +4,32 @@
 	
 	$user_id = $_POST['user'];
 
-	$query = "select * from users where id=\"".$user_id."\";";
-	$result = $db->query($query);
+	$query = "select * from users where id=?;";
+	$stmt = $db->prepare($query);
+	$stmt->bind_param("i", $user_id);
+	$stmt->execute();
+	$result = $stmt->get_result();
 	$user = $result->fetch_assoc();
 	
-	$lquery = "select * from login where id=\"".$user_id."\";";
-	$lresult = $db->query($lquery);
+	$lquery = "select * from login where id=?;";
+	$stmt = $db->prepare($lquery);
+	$stmt->bind_param("i", $user_id);
+	$stmt->execute();
+	$lresult = $stmt->get_result();
 	$login = $lresult->fetch_assoc();
 	
-	$cquery = "select * from comments where user_id=".$user_id.";";
-	$cresult = $db->query($cquery);
+	$cquery = "select * from comments where user_id=?;";
+	$stmt = $db->prepare($cquery);
+	$stmt->bind_param("i", $user_id);
+	$stmt->execute();
+	$cresult = $stmt->get_result();
 	$num_comments = $cresult->num_rows;
 	
-	$pquery = "select * from posts where user_id=".$user_id.";";
-	$presult = $db->query($pquery);
+	$pquery = "select * from posts where user_id=?;";
+	$stmt = $db->prepare($pquery);
+	$stmt->bind_param("i", $user_id);
+	$stmt->execute();
+	$presult = $stmt->get_result();
 	$num_posts = $presult->num_rows;
 ?>
 <!DOCTYPE HTML>

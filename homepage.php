@@ -11,8 +11,15 @@
 		$presult = $tpresult;
 		$pnum_results = $tpnum_results;
 	}else{
-		$pquery = 'select * from posts where (id='.$tpnum_results.' or id='.($tpnum_results-1).' or id='.($tpnum_results-2).' or id='.($tpnum_results-3).' or id='.($tpnum_results-5).');';
-		$presult = $db->query($pquery);
+		$pquery = 'select * from posts where (id=? or id=? or id=? or id=? or id=?);';
+		$stmt = $db->prepare($pquery);
+		$tp1 = $tpnum_results-1;
+		$tp2 = $tpnum_results-2;
+		$tp3 = $tpnum_results-3;
+		$tp4 = $tpnum_results-4;
+		$stmt->bind_param("iiiii", $tpnum_results, $tp1, $tp2, $tp3, $tp4);
+		$stmt->execute();
+		$presult = $stmt->get_result();
 		$pnum_results = $presult->num_rows;
 	}
 	

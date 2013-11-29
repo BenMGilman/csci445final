@@ -25,8 +25,11 @@
 			$page = "General";
 		}
 		
-		$uquery = "select * from users where id=".$prow['user_id'].";";
-		$uresult = $db->query($uquery);
+		$uquery = "select * from users where id=?;";
+		$stmt = $db->prepare($uquery);
+		$stmt->bind_param("i", $prow['user_id']);
+		$stmt->execute();
+		$uresult = $stmt->get_result();
 		$unum_results = $uresult->num_rows;
 		$urow = $uresult->fetch_assoc();
 		
@@ -69,8 +72,11 @@
 				</tr>
 			</table>';
 		
-		$cquery = "select * from comments where post_id=".$postid;
-		$cresult = $db->query($cquery);
+		$cquery = "select * from comments where post_id=?;";
+		$stmt = $db->prepare($cquery);
+		$stmt->bind_param("i", $postid);
+		$stmt->execute();
+		$cresult = $stmt->get_result();
 		$cnum_results = $cresult->num_rows;
 		
 		if($cnum_results > 0){
@@ -79,8 +85,11 @@
 				$crow = $cresult->fetch_assoc();
 				$comment = stripslashes($crow['comment']);
 				
-				$uquery = "select * from users where id=".$crow['user_id'].";";
-				$uresult = $db->query($uquery);
+				$uquery = "select * from users where id=?;";
+				$stmt = $db->prepare($uquery);
+				$stmt->bind_param("i", $crow['user_id']);
+				$stmt->execute();
+				$uresult = $stmt->get_result();
 				$unum_results = $uresult->num_rows;
 				$urow = $uresult->fetch_assoc();
 				
