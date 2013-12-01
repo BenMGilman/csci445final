@@ -95,11 +95,12 @@
 <?php
 	echo '<div id="userposts">';
 	echo '<h4>Posts:</h4>';
-	if($num_posts < 0)
+	if($num_posts <= 0)
 		echo 'No Recent Posts';
 	else{
 		for ($i=0; $i<$num_posts; $i++){
 			$post = $presult->fetch_assoc();
+			echo '<div class="posting">';
 			echo '<table><tr><td>';
 			echo stripslashes($post['post_date']).'
 			<form action="editpost.php" method="post">
@@ -107,28 +108,28 @@
 			<textarea name="postarea" rows="5" cols="80" required>'.stripslashes($post['post']).'</textarea><br>
 			<input type="submit" value="Edit"/><input type="hidden" name="postid" value="'.stripslashes($post['id']).'">
 			</form>';
-			echo '</td></tr>';
+			echo '</td></tr></table></div>';
 		}
-		echo "</table>";
 	}
 	
 	echo '<h4>Comments:</h4>';
-	if($num_comments < 0)
+	if($num_comments <= 0)
 		echo 'No Recent Comments';
 	else{
 		for ($i=0; $i<$num_comments; $i++){
 			$comment = $cresult->fetch_assoc();
+			echo '<div class="posting">';
 			echo '<table><tr><td>';
 			echo stripslashes($comment['post_date']).'
 			<form action="editpost.php" method="post">
 			<textarea name="postarea" rows="5" cols="80" required>'.stripslashes($comment['comment']).'</textarea><br>
 			<input type="submit" value="Edit"/><input type="hidden" name="commentid" value="'.stripslashes($comment['id']).'">
 			</form>';
-			echo '</td></tr>';
+			echo '</td></tr></table></div>';
 		}
-		echo "</table>";
 	}
 	echo '</div>';
 ?>
 </body>
+<?php include_once('footer.php'); ?>
 </html>

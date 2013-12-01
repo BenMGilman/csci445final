@@ -37,4 +37,5 @@
 <h1>COURSE PAGE</h1>
 <?php include_once('recentactivity.php'); ?>
 </body>
+<?php include_once('footer.php'); ?>
 </html>

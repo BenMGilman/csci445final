@@ -67,4 +67,5 @@
 <h1>HOME PAGE</h1>
 <?php include_once('homeposts.php'); ?>
 </body>
+<?php include_once('footer.php'); ?>
 </html>

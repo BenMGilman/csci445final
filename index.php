@@ -34,6 +34,8 @@
 	</table>
 </fieldset>
 </form>
+<br />
 <a href="forgotpassword.php">Forgot your password?</a>
 </body>
+<?php include_once('footer.php'); ?>
 </html>

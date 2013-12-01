@@ -1,3 +1,27 @@
+h1{
+	font-family: Georgia, "Times New Roman", serif;
+	color: rgb(41, 63, 107);
+	text-shadow: 3px 3px rgb(205, 205, 205);
+	text-align: center;
+}
+
+body{
+	font-family: Arial, Calibri, sans-serif;
+	font-size: 11pt;
+	margin-bottom: 30px;
+}
+
+footer{
+	padding-top: 100px;
+	font-size: 8pt;
+}
+
+textarea{
+	/*Currently unimplemented. Is it possible for it to
+		only grow vertically?
+	resize: none;*/
+}
+
 #activity {
 	margin-left: 10px;
 	width: 95%;
@@ -7,8 +31,6 @@
 		padding: 3px;
 	}
 	#activity #keyword{
-		background: rgb(41, 63, 107);
-		color: rgb(205, 205, 205);
 		font-weight: bold;
 	}
 	#activity div{
@@ -30,49 +52,27 @@
 		padding: 3px;
 	}
 	#recent #key{
-		background: rgb(41, 63, 107);
-		color: rgb(205, 205, 205);
 		font-weight: bold;
 	}
 	#recent div{
 		margin-left: 40px;
 	}
 
-#diffposts {
+#diffposts, #userposts {
 	margin-left: 10px;
 	width: 95%;
 	border-spacing: 10px;
 }
-	#diffposts td{
+	#diffposts td, #userposts td{
 		padding: 3px;
 	}
-	#diffposts #key{
-		background: rgb(41, 63, 107);
-		color: rgb(205, 205, 205);
+	#diffposts #key, #userposts #key{
 		font-weight: bold;
 	}	
 	
 #diffuserinfo td{
 	padding: 4px;
 }	
-	
-#activity .posting, #recent .posting, #diffposts .posting{
-	border: 1px solid black;
-	border-radius: 20px;
-	padding: 4px;
-	margin-left: 0px;
-	margin-bottom: 15px;
-	background: rgb(205, 205, 205);
-	box-shadow: 4px 5px 5px;
-}
-
-#left, #pagenav{
-	margin: 3px;
-}
-
-#pagenav li, #header{
-	border: 2px solid black;
-}
 
 #left{
 	float: left;
@@ -80,7 +80,6 @@
 }
 	#left a {
 		text-decoration: none;
-		color: rgb(205, 205, 205);
 		font-weight: bold;
 	}
 
@@ -113,11 +112,9 @@
 	}
 
 #header{
-	background: rgb(41, 63, 107);
 	border-top: 10px solid rgb(205, 205, 205);
 	padding: 5px;
 	padding-bottom: 0px;
-	color: rgb(205, 205, 205);
 	font-size: 1.05em;
 }
 	#header br{
@@ -126,3 +123,30 @@
 	#header #pagenav{
 		padding-top: 5px;
 	}
+	
+/*Shared formatting elements*/
+#header, #left a, #activity #keyword, #recent #key, #diffposts #key{
+	color: rgb(205, 205, 205);
+}
+
+#activity #keyword, #recent #key, #diffposts #key, #header{
+	background: rgb(41, 63, 107);
+}
+
+#activity .posting, #recent .posting, #diffposts .posting, #userposts .posting{
+	border: 1px solid black;
+	border-radius: 20px;
+	padding: 4px;
+	margin-left: 0px;
+	margin-bottom: 15px;
+	background: rgb(205, 205, 205);
+	box-shadow: 4px 5px 5px;
+}
+
+#left, #pagenav{
+	margin: 3px;
+}
+
+#pagenav li, #header{
+	border: 2px solid black;
+}
