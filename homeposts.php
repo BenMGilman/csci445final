@@ -81,7 +81,7 @@
 		
 		if($cnum_results > 0){
 			echo '<div>';
-			for ($i=0; $i<$cnum_results; $i++){
+			for ($k=0; $k<$cnum_results; $k++){
 				$crow = $cresult->fetch_assoc();
 				$comment = stripslashes($crow['comment']);
 				
